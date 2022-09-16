@@ -1,0 +1,75 @@
+<header>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+          <span class="navbar-brand mb-0 h1">Pukanshu Kumar</span>
+
+          <div ngbDropdown class="d-inline-block">
+            <button type="button" class="btn "  ngbDropdownToggle>Menu</button>
+            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+              <button (click)="saveNewTask()" ngbDropdownItem>Save List Task</button>
+              <button (click)="saveCompletedTask()" ngbDropdownItem>Save Completed Task</button>
+              <button (click)="fetchTask()" ngbDropdownItem>Fetch List Task</button>
+              <button (click)="fetchCompletedTask()" ngbDropdownItem>Fetch Completed Task</button>
+            </div>
+          </div>
+
+        </div>
+      </nav>
+</header>
+
+
+<div class="container">
+    <div class="row mt-4 justify-content-center">
+        <div class="col-md-5 mx-auto">
+            <div class="row">
+                <div class="col-md-12 text-center  bg-light py-4 rounded">
+                    <h3>To Do List</h3>
+                </div>
+                <div class="col-md-10 mx-auto mt-3">
+                    <input type="text" class="form-control" placeholder="Input Your Task" #taskInput (keydown.enter)="getTask(taskInput)">
+                </div>
+                <div class="col-md-2 mt-3">
+                    <button class="btn btn-primary w-100" type="button" (click)="getTask(taskInput)">Add</button>
+                </div>
+            </div>
+        
+            <div class="row g-4 mt-3">
+                <div class="col-md-6" *ngFor="let task of tasks;let i = index">
+                    <div class="card">
+                        <div class="card-body">
+                          <p class="card-text mb-4">{{task}}</p>
+                          </div>
+                          <div class="card-footer">
+                          <button type="button" class="btn btn-outline-danger btn-sm me-2" (click)="deleteTask(i)">
+                           <span class="me-2"> Delete</span>
+                            <i class="fa fa-trash fa-1x" aria-hidden="true"> </i>
+                          </button>
+                          <button type="button" class="btn btn-success btn-sm rounded" (click)="completeTask(i,task)">
+                            <span class="me-2">Completed</span>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                          </button>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 mx-auto">
+            <hr>
+            <div class="row g-4 ">
+                <div class="col-md-12 d-flex justify-content-between">
+                    <h5>Completed Task</h5>
+                    <a class="text-primary text-decoration-none" style="cursor:pointer;" (click)="clearTask()">Clear task</a>
+                </div>
+                <div class="col-md-6" *ngFor="let task of completedTask;">
+                    <div class="card" >
+                        <div class="card-body">
+                          <p class="card-text text-decoration-line-through">{{task}}</p>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+
+</div>
