@@ -12,9 +12,9 @@ import { ToDoListComponent } from './to-do-list/to-do-list.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routes: Routes = [
-  // {path:'',component:HomePageComponent},
-  {path:'',component:ToDoListComponent},
-  // {path:'to_do_list',component:ToDoListComponent}
+  {path:'',component:HomePageComponent},
+  // {path:'',component:ToDoListComponent},
+  {path:'to_do_list',component:ToDoListComponent}
 ]
 
 @NgModule({
